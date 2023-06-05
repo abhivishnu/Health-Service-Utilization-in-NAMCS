@@ -1,0 +1,202 @@
+          /* 
+
+PROGRAM: NAM93SAS
+PURPOSE: INPUT STATEMENT TO CREATE 1993 NAMCS PUBLIC USE FILE.
+
+We recommend that you use a MISSOVER option in your INFILE statement.
+The value of LRECL may equal or exceed the actual file size.  We use a value
+of 999 for convenience.
+
+EXAMPLE: INFILE [file reference] MISSOVER LRECL=999;
+
+          */
+
+INPUT
+@001   VMONTH         2.   /*  Month of visit */
+@003   VDAY           2.   /*  Day of visit - 1-31 */
+@005   VYEAR          2.   /*  Year of visit - last 2 digits */
+@007   AGE            2.   /*  Patient age in years */
+@009   SEX            1.   /*  Patient sex */
+@010   RACE           1.   /*  Patient race */
+@011   ETHNIC         1.   /*  Patient ethnicity */
+@012   HMO            1.   /*  Expected source of payment - HMO/Oth prepaid */
+@013   MEDICARE       1.   /*  Expected source of payment - Medicare */
+@014   MEDICAID       1.   /*  Expected source of payment - Medicaid */
+@015   OTHGOVT        1.   /*  Expected source of payment - Oth gov't */
+@016   PRIVINS        1.   /*  Expected source of payment - Private/Comm insur*/    
+@017   SELFPAY        1.   /*  Expected source of payment - Patient paid */
+@018   NOCHARGE       1.   /*  Expected source of payment - No charge */
+@019   OTHPAY         1.   /*  Expected source of payment - Other */
+@020   UNKPAY         1.   /*  Expected source of payment - Unknown */                       
+@021   REFER          1.   /*  Was pat referred by oth physician for visit? */
+@022   INJURY         1.   /*  Is this visit injury related? */
+@023   SMOKCIG        1.   /*  Does patient smoke cigarettes? */
+@024   RFV1           5.   /*  Patient's reason for visit #1 */
+@029   RFV2           5.   /*  Patient's reason for visit #2 */
+@034   RFV3           5.   /*  Patient's reason for visit #3 */
+@024   RFV13D         4.   /*  Patient's reason for visit #1 - broad */
+@029   RFV23D         4.   /*  Patient's reason for visit #2 - broad */
+@034   RFV33D         4.   /*  Patient's reason for visit #3 - broad */
+@039   DIAG1          6.   /*  Physician's diagnosis #1 */
+@045   DIAG2          6.   /*  Physician's diagnosis #2 */
+@051   DIAG3          6.   /*  Physician's diagnosis #3 */
+@039   DIAG13D        4.   /*  Physician's diagnosis #1 - broad */
+@045   DIAG23D        4.   /*  Physician's diagnosis #2 - broad */
+@051   DIAG33D        4.   /*  Physician's diagnosis #3 - broad */
+@057   SENBEFOR       1.   /*  Have you/anyone in practice seen pat before? */
+@058   IFYES          1.   /*  If seen before, for diagnosis in item 11a? */
+@059   ASTHMA         1.   /*  Does patient have - Asthma */
+@060   DIABETES       1.   /*  Does patient have - Diabetes */
+@061   HIV            1.   /*  Does patient have - HIV */
+@062   OBESITY        1.   /*  Does patient have - Obesity */
+@063   OSTEOPOR       1.   /*  Does patient have - Osteoporosis */
+@064   NONE           1.   /*  Does patient have - None of the above */
+@065   NOTESTS        1.   /*  Test, procs, therapies ordered/prov-None */
+@066   BLODPRES       1.   /*  Blood pressure */
+@067   URINE          1.   /*  Urinalysis */
+@068   SPIROMET       1.   /*  Spirometry */
+@069   ALLERTST       1.   /*  Allergy testing */
+@070   HIVSER         1.   /*  HIV serology */
+@071   OTHERBLD       1.   /*  Other blood test */
+@072   PROC1PER       1.   /*  Service #1 performed or ordered */
+@073   PROC1     $char4.   /*  Service #1 procedure code - 4 digits */
+@073   PROC13D   $char3.   /*  Service #1 procedure code - 3 digits */
+@073   PROC12D   $char2.   /*  Service #1 procedure code - 2 digits */
+@077   PROC2PER       1.   /*  Service #2 performed or ordered */
+@078   PROC2     $char4.   /*  Service #2 procedure code - 4 digits */
+@078   PROC23D   $char3.   /*  Service #2 procedure code - 3 digits */
+@078   PROC22D   $char2.   /*  Service #2 procedure code - 2 digits */
+@082   PROC3PER       1.   /*  Service #3 performed or ordered */
+@083   PROC3     $char4.   /*  Service #3 procedure code - 4 digits */
+@083   PROC33D   $char3.   /*  Service #3 procedure code - 3 digits */
+@083   PROC32D   $char2.   /*  Service #3 procedure code - 2 digits */
+@087   PROC4PER       1.   /*  Service #4 performed or ordered */
+@088   PROC4     $char4.   /*  Service #4 procedure code - 4 digits */
+@088   PROC43D   $char3.   /*  Service #4 procedure code - 3 digits */
+@088   PROC42D   $char2.   /*  Service #4 procedure code - 2 digits */
+@092   PROC5PER       1.   /*  Service #5 performed or ordered */
+@093   PROC5     $char4.   /*  Service #5 procedure code - 4 digits */
+@093   PROC53D   $char3.   /*  Service #5 procedure code - 3 digits */
+@093   PROC52D   $char2.   /*  Service #5 procedure code - 2 digits */
+@097   PROC6PER       1.   /*  Service #6 performed or ordered */
+@098   PROC6     $char4.   /*  Service #6 procedure code - 4 digits */
+@098   PROC63D   $char3.   /*  Service #6 procedure code - 3 digits */
+@098   PROC62D   $char2.   /*  Service #6 procedure code - 2 digits */
+@102   PROC7PER       1.   /*  Service #7 performed or ordered */
+@103   PROC7     $char4.   /*  Service #7 procedure code - 4 digits */
+@103   PROC73D   $char3.   /*  Service #7 procedure code - 3 digits */
+@103   PROC72D   $char2.   /*  Service #7 procedure code - 2 digits */
+@107   PROC8PER       1.   /*  Service #8 performed or ordered */
+@108   PROC8     $char4.   /*  Service #8 procedure code - 4 digits */
+@108   PROC83D   $char3.   /*  Service #8 procedure code - 3 digits */
+@108   PROC82D   $char2.   /*  Service #1 procedure code - 2 digits */
+@112   NOCOUNS        1.   /*  Counseling/education - none */
+@113   EXERCISE       1.   /*  Exercise couns/educ */
+@114   CHOLRED        1.   /*  Cholesterol reduction couns/educ */
+@115   WEIGHT         1.   /*  Weight reduction couns/educ */
+@116   SMOKCES        1.   /*  Smoking cessation couns/educ */
+@117   GRWTHDEV       1.   /*  Growth/Development couns/educ */
+@118   INJPREV        1.   /*  Injury prevention couns/educ */
+@119   HIVTR          1.   /*  HIV transmission couns/educ */
+@120   OTHSTDTR       1.   /*  Other STD transmission couns/educ */
+@121   OTHCOUN        1    /*  Other counseling */
+@122   MED            1.   /*  Were medications ordered or provided? */
+@123   NUMMED         1.   /*  Number of medications coded */
+@124   MED1      $char5.   /*  Medication #1 */
+@129   MED2      $char5.   /*  Medication #2 */
+@134   MED3      $char5.   /*  Medication #3 */
+@139   MED4      $char5.   /*  Medication #4 */
+@144   MED5      $char5.   /*  Medication #5 */
+@149   NOFOLLOW       1.   /*  No follow-up planned */
+@150   RETAPPT        1.   /*  Return at specified time */
+@151   RETPRN         1.   /*  Return if needed, P.R.N. */
+@152   TELEPHON       1.   /*  Telephone follow-up planned */
+@153   REFOTHPH       1.   /*  Referred to another physician */
+@154   REFPHYS        1.   /*  Returned to referring physician */
+@155   ADMITHOS       1.   /*  Admitted to hospital */
+@156   OTHERDIS       1.   /*  Other disposition */
+@157   TIMEMD         3.   /*  Duration of visit (in minutes) */
+@160   PATWT          6.   /*  Patient visit weight (rounded) */
+@166   REGION         1.   /*  Geographic region of physician office */
+@167   URBAN          1.   /*  Metro/non-metro status of location of office */
+@168   SPEC      $char3.   /*  Physician specialty */
+@171   MDDO           1.   /*  Type of physician (MD or DO) */
+@172   PHYCODE        4.   /*  Physician code */
+@176   PATCODE        3.   /*  Patient code */
+@179   BDATEFL        1.   /*  Was patient's birth year imputed? */
+@180   SEXFL          1.   /*  Was patient's sex imputed? */
+@181   REFERFL        1.   /*  Was patient's referral status imputed? */
+@182   SENBEFL        1.   /*  Was `Was patient seen before?` imputed? */
+@183   IFYESFL        1.   /*  Was `If seen before...` imputed? */ 
+@184   DISPFL         1.   /*  Was visit disposition imputed? */
+@185   TIMEMDFL       1.   /*  Was time spent with physician imputed? */
+@186   RACEFL         1.   /*  Was patient's race imputed? */
+@187   ETHNICFL       1.   /*  Was patient's ethnicity imputed? */
+@188   GEN1      $char5.   /*  Generic name code for medication #1 */
+@193   PRESCR1        1.   /*  Prescription status code for medication #1 */
+@194   CONTSUB1       1.   /*  Controlled substance code for medication #1 */
+@195   COMSTAT1       1.   /*  Composition status code for medication #1 */
+@196   DRUGCL1   $char4.   /*  Drug class for medication #1 */
+@200   DRG1ING1  $char5.   /*  Ingredient code #1 for medication #1 */
+@205   DRG1ING2  $char5.   /*  Ingredient code #2 for medication #1 */
+@210   DRG1ING3  $char5.   /*  Ingredient code #3 for medication #1 */
+@215   DRG1ING4  $char5.   /*  Ingredient code #4 for medication #1 */
+@220   DRG1ING5  $char5.   /*  Ingredient code #5 for medication #1 */
+@225   GEN2      $char5.   /*  Generic name code for medication #2 */
+@230   PRESCR2        1.   /*  Prescription status code for medication #2 */
+@231   CONTSUB2       1.   /*  Controlled substance code for medication #2 */
+@232   COMSTAT2       1.   /*  Composition status code for medication #2 */
+@233   DRUGCL2   $char4.   /*  Drug class for medication #2 */
+@237   DRG2ING1  $char5.   /*  Ingredient code #1 for medication #2 */
+@242   DRG2ING2  $char5.   /*  Ingredient code #2 for medication #2 */
+@247   DRG2ING3  $char5.   /*  Ingredient code #3 for medication #2 */
+@252   DRG2ING4  $char5.   /*  Ingredient code #4 for medication #2 */
+@257   DRG2ING5  $char5.   /*  Ingredient code #5 for medication #2 */
+@262   GEN3      $char5.   /*  Generic name code for medication #3 */
+@267   PRESCR3        1.   /*  Prescription status code for medication #3 */
+@268   CONTSUB3       1.   /*  Controlled substance code for medication #3 */
+@269   COMSTAT3       1.   /*  Composition status code for medication #3 */
+@270   DRUGCL3   $char4.   /*  Drug class for medication #3 */
+@274   DRG3ING1  $char5.   /*  Ingredient code #1 for medication #3 */
+@279   DRG3ING2  $char5.   /*  Ingredient code #2 for medication #3 */
+@284   DRG3ING3  $char5.   /*  Ingredient code #3 for medication #3 */
+@289   DRG3ING4  $char5.   /*  Ingredient code #4 for medication #3 */
+@294   DRG3ING5  $char5.   /*  Ingredient code #5 for medication #3 */
+@299   GEN4      $char5.   /*  Generic name code for medication #4 */
+@304   PRESCR4        1.   /*  Prescription status code for medication #4 */
+@305   CONTSUB4       1.   /*  Controlled substance code for medication #4 */
+@306   COMSTAT4       1.   /*  Composition status code for medication #4 */
+@307   DRUGCL4   $char4.   /*  Drug class for medication #4 */
+@311   DRG4ING1  $char5.   /*  Ingredient code #1 for medication #4 */
+@316   DRG4ING2  $char5.   /*  Ingredient code #2 for medication #4 */
+@321   DRG4ING3  $char5.   /*  Ingredient code #3 for medication #4 */
+@326   DRG4ING4  $char5.   /*  Ingredient code #4 for medication #4 */
+@331   DRG4ING5  $char5.   /*  Ingredient code #5 for medication #4 */
+@336   GEN5      $char5.   /*  Generic name code for medication #5 */
+@341   PRESCR5        1.   /*  Prescription status code for medication #5 */
+@342   CONTSUB5       1.   /*  Controlled substance code for medication #5 */
+@343   COMSTAT5       1.   /*  Composition status code for medication #5 */
+@344   DRUGCL5   $char4.   /*  Drug class for medication #5 */
+@348   DRG5ING1  $char5.   /*  Ingredient code #1 for medication #5 */
+@353   DRG5ING2  $char5.   /*  Ingredient code #2 for medication #5 */
+@358   DRG5ING3  $char5.   /*  Ingredient code #3 for medication #5 */
+@363   DRG5ING4  $char5.   /*  Ingredient code #4 for medication #5 */
+@368   DRG5ING5  $char5.   /*  Ingredient code #5 for medication #5 */
+@373   RACER          1.   /*  Patient race recode: White, Black, Other */
+@374   SPECR          2.   /*  Physician specialty recode */  
+@500   STRATM         3.   /*  PSU stratum marker (masked) */ 
+@503   PSUM           5.   /*  PSU marker (masked) */
+@508   YEAR           4.   /*  Survey year (1993) */
+@512   SUBFILE        1.   /*  Survey identifier (constant=1 for NAMCS) */
+@513   PROSTRAT       2.   /*  Provider stratum marker */
+@515   PROVIDER       4.   /*  Provider code */
+@519   DEPT           1.   /*  Hospital dept code (constant=1 for NAMCS) */
+@520   SU             3.   /*  Hospital sampling unit code (=001 for NAMCS) */
+@523   CLINIC         3.   /*  Hospital clinic code (=001 for NAMCS) */
+@526   POPPSUM        2.   /*  Stratum counts of PSUs (masked) */
+@528   POPSUM         3.   /*  # of clinic sampling units in hos (=0 for NAMCS) */
+@531   POPVISM        6.   /*  Estimated provider visit volume (masked) */
+@537   POPPROVM       6.   /*  Estimated # of inscope providers in PSU (masked) */
+;
+
+

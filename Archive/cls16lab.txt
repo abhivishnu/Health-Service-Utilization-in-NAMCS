@@ -1,0 +1,235 @@
+
+          /*
+
+SAS CODEBOOK FOR 2016 NATIONAL AMBULATORY MEDICAL CARE SURVEY SUPPLEMENT ON 
+CULTURALLY AND LINGUISTICALLY APPROPRIATE SERVICES FOR OFFICE-BASED PHYSICIANS 
+(National CLAS Physician Survey) PUBLIC USE FILE
+
+INCLUDES VARIABLE LABELS AND FORMAT ASSIGNMENTS
+
+          */   
+
+LABEL
+PHYCODE="Physician code"
+YRSCARER="Including residency, how many years have you been providing direct care for patients in an office-based setting?"
+SETTINGR="In what setting do you typically provide care to the most patients?"
+MDSCHTRG="Did you receive any training in cultural competency in your clinical training programs including medical school and residency?"
+CMETRG="After medical school and residency, have you participated in training for cultural competency such as continuing medical education (CME)?"
+CMEPOP1="If yes to CMETRG, which of these population groups have been addressed in the training(s) for cultural competency in which you have participated? - Racial/ethnic minorities"
+CMEPOP2="If yes to CMETRG, which of these population groups have been addressed in the training(s) for cultural competency in which you have participated? - Religious groups"
+CMEPOP3="If yes to CMETRG, which of these population groups have been addressed in the training(s) for cultural competency in which you have participated? - Lesbian, gay, bisexual, transgender (LGBT) populations"
+CMEPOP4="If yes to CMETRG, which of these population groups have been addressed in the training(s) for cultural competency in which you have participated? - Persons with limited English proficiency (LEP)"
+CMEPOP5="If yes to CMETRG, which of these population groups have been addressed in the training(s) for cultural competency in which you have participated? - Inmates/formerly incarcerated"
+CMEPOP6="If yes to CMETRG, which of these population groups have been addressed in the training(s) for cultural competency in which you have participated? - Other"
+CMEAREA1="Which of the following areas have been typically included in training(s) for cultural competency in which you have participated? - Cultural beliefs, values, and behaviors"
+CMEAREA2="Which of the following areas have been typically included in training(s) for cultural comptency in which you have participated? - Organizational policies, plans, and protocols regarding culturally and linguistically appropriate services"
+CMEAREA3="Which of the following areas have been typically included in training(s) for cultural comptency in which you have participated? - Heatlh disparities"
+CMEAREA4="Which of the following areas have been typically included in training(s) for cultural comptency in which you have participated? - Complementary and alternative healing practices"
+CMEAREA5="Which of the following areas have been typically included in training(s) for cultural comptency in which you have participated? - Other"
+CMEREQ="Was your participation in training for cultural competency to satisfy a continuing medical education unit (CME) requirement or as a requirement for credentialing?"
+CLASTRAIN="Within the past 12 months, have you participated in any training for cultural competency?"
+CME12POP1="If Yes to CLASTRAIN, which of these population groups have been addressed in the training(s) for cultural competency in which you have participated in the past 12 months? - Racial/ethnic minorities"
+CME12POP2="Which of these population groups have been addressed in the training(s) for cultural compentency in which you have participated in the past 12 months? - Religious groups"
+CME12POP3="Which of these population groups have been addressed in the training(s) for cultural compentency in which you have participated in the past 12 months? - Lesbian, gay, bisexual, transgender (LGBT) populations"
+CME12POP4="Which of these population groups have been addressed in the training(s) for cultural compentency in which you have participated in the past 12 months? - Persons with limited English proficiency (LEP)"
+CME12POP5="Which of these population groups have been addressed in the training(s) for cultural compentency in which you have participated in the past 12 months? - Inmates/formerly incarcerated"
+CME12POP6="Which of these population groups have been addressed in the training(s) for cultural compentency in which you have participated in the past 12 months? - Other"
+CME12AREA1="If Yes to CLASTRAIN,which of the following areas have been typically included in training(s) for cultural competency in which you have participated in past 12 mos? -Cultural beliefs, values, and behaviors"
+CME12AREA2="If Yes to CLASTRAIN,which of the following areas have been typically included in training(s) for cultural competency in which you have participated in past 12 mos? -Organizational policies, plans and protocols regard CLAS"
+CME12AREA3="If Yes to CLASTRAIN,which of the following areas have been typically included in training(s) for cultural competency in which you have participated in past 12 mos? -Health disparities"
+CME12AREA4="If Yes to CLASTRAIN,which of the following areas have been typically included in training(s) for cultural competency in which you have participated in past 12 mos? -Complementary and alternative healing practices"
+CME12AREA5="If Yes to CLASTRAIN,which of the following areas have been typically included in training(s) for cultural competency in which you have participated in past 12 mos? -Other"
+CME12REQ="Was your participation in training for cultural competency in the past 12 months to satisfy a continuing medical education unit (CME) requirement or as a requirement for credentialing?"
+HIRETRG="Is training in cultural competency required for newly hired physicians who join your practice?"
+OFFERTRG="How often does your practice offer or make available training in cultural competency?"
+CLASPOLICY="Does your practice have at least one written policy related to the provision of culturally and linguistically appropriate services?"
+AWAREPOLICY="If Yes to CLASPOLICY, if you work in a non-solo practice, how aware are you of your practice's written policy related to culturally and linguistically appropriate services?"
+LIMITLIT1="In what format are printed materials provided to your patients with limited English literacy? - Documents created with plain language software or reviewed for literacy level"
+LIMITLIT2="In what format are printed materials provided to your patients with limited English literacy? - Universal symbols"
+LIMITLIT3="In what format are printed materials provided to your patients with limited English literacy? - Infographics"
+LIMITLIT4="In what format are printed materials provided to your patients with limited English literacy? - Other"
+LIMITLIT5="In what format are printed materials provided to your patients with limited English literacy? - Not applicable"
+LANGASST1="Which of these free language-assistance services are available to patients in your practice? - Translated informational documents"
+LANGASST2="Which of these free language-assistance services are available to patients in your practice? - Recorded messages in different languages on telephone lines"
+LANGASST3="Which of these free language-assistance services are available to patients in your practice? - Translated signage and notices a key points of contact throughout the office"
+LANGASST4="Which of these free language-assistance services are available to patients in your practice? - Other"
+LANGASST5="Which of these free language-assistance services are available to patients in your practice? - Not applicable"
+INTERP="Do you use interpreters when working with patients who have limited English proficiency?"
+INTERPTY1="If Yes to INTERP, when you use interpreters how often do you use each type? - Staff/contractor trained as a medical interpreter"
+INTERPTY2="If Yes to INTERP, when you use interpreters how often do you use each type? - Bilingual staff"
+INTERPTY3="If Yes to INTERP, when you use interpreters how often do you use each type? - Patient's relative or friend"
+TRANSMAT1="What types of materials, in language(s) other than English, are available to your patients? - Wellness/illness related education"
+TRANSMAT2="What types of materials, in language(s) other than English, are available to your patients? - Patient rights/informed consent documents"
+TRANSMAT3="What types of materials, in language(s) other than English, are available to your patients? - Advanced directives"
+TRANSMAT4="What types of materials, in language(s) other than English, are available to your patients? - Payment"
+TRANSMAT5="What types of materials, in language(s) other than English, are available to your patients? - Care plan"
+TRANSMAT6="What types of materials, in language(s) other than English, are available to your patients? - Other"
+TRANSMAT7="What types of materials, in language(s) other than English, are available to your patients? - Not applicable"
+LANGUAGE="Are you fluent in a language besides English?"
+LANGSERV="How many languages, other than English, do you feel comfortable enough to provide health care services?"
+KNOWBELIEFS="How knowledgeable are you of your patients' health beliefs, customs, and values?"
+MEDNEED1="When assessing your patients' medical needs, how often do you consider: Race/ethnicity?"
+MEDNEED2="When assessing your patients' medical needs, how oten do you consider: Other cultural factors such as health beliefs, customs, values?"
+DIAGNOSE1="When diagnosing your patients, how often do you consider: Race/ethnicity?"
+DIAGNOSE2="When diagnosing your patients, how often do you consider: Other cultural factors such as health beliefs, customs, values?"
+TREAT1="When treating your patients, how often do to you consider: Race/ethnicity?"
+TREAT2="When treating your patients, how often do to you consider:  Other cultural factors such as health beliefs, customs, values?"
+HLTHEDU1="When conducting health education with your patients, how often do you consider: Race/ethnicity?"
+HLTHEDU2="When conducting health education with your patients, how often do you consider: Other cultural factors such as health beliefs, customs, values?"
+SERVASMT="How often does your practice assess your services to patients for their cultural and linguistic appropriateness?"
+SATISFY="By providing culturally and linguistically appropriate services to my patients, I expect: Improved patient satisfaction with the services provided"
+COMPREHEND="By providing culturally and linguistically appropriate services to my patients, I expect: Improved comprehension of treatment and lifestyle recommendations"
+TRMTADHERE="By providing culturally and linguistically appropriate services to my patients, I expect: Better adherence to treatment and lifestyle recommendations"
+TRUST="By providing culturally and linguistically appropriate services to my patients, I expect: Improved patient trust"
+QUALITYCARE="By providing culturally and linguistically appropriate services to my patients, I expect: Improved quality of patient care (e.g., diagnostics, communication, treatment)"
+LIABILITY="By providing culturally and linguistically appropriate services to my patients, I expect: Decreased likelihood of liability/malpractice claims"
+FORMALPOLICY="How has each of the following factors affected you in providing cultural and linguistically appropriate services to your patients? - Formal written policy"
+RESOURCES="How has each of the following factors affected you in providing cultural and linguistically appropriate services to your patients? - Organizational resources"
+CULTRTRG="How has each of the following factors affected you in providing cultural and linguistically appropriate services to your patients? - Training in cultural competency"
+PATKNOW="How has each of the following factors affected you in providing cultural and linguistically appropriate servcies to your patients? - Personal knowledge about the prevailing beliefs, customs, norms, and values of the diverse groups in your patient load"
+OTHERFACTOR="How has each of the following factors affected you in providing culturall and linguistically appropriate servcies to your patients? - Other factors"
+CLASKNOW="How familiar are you with the National Standards for Culturally and Linguistically Appropriate Services in Health and Heatlh Care (the National CLAS Standards)?"
+CLASKNOW1="If Yes to CLASKNOW, how have you gained knowledge about the National CLAS standards? - Through initial employment orientation in my current organization"
+CLASKNOW2="If Yes to CLASKNOW, how have you gained knowledge about the National CLAS standards? - Through other trainings such as in-service, continuing education, or professional development activities in my current organization"
+CLASKNOW3="If Yes to CLASKNOW, how have you gained knowledge about the National CLAS standards? - Through attending a training/meeting/webinar outside of my current organization"
+CLASKNOW4="If Yes to CLASKNOW, how have you gained knowledge about the National CLAS standards? - Through reading a report, publication, newsletter, or other materials publicly available"
+CLASKNOW5="If Yes to CLASKNOW, how have you gained knowledge about the National CLAS standards? - Other"
+CLASADOPT="Has your practice adopted the National CLAS standards?"
+RECRACETH="Does your practice record your patients' race or ethnicity?"
+PATHISPANICR="What percent of your patient population is represented by each of the following categories? - Hispanic or Latino, of any race"
+PATAINALNR="What percent of your patient population is represented by each of the following categories? - American Indian or Alaska Native, not Hispanic or Latino"
+PATASIANR="What percent of your patient population is represented by each of the following categories? - Asian, not Hispanic or Latino"
+PATBLACKR="What percent of your patient population is represented by each of the following categories? - Black or African American, not Hispanic or Latino"
+PATNHOPIR="What percent of your patient population is represented by each of the following categories? - Native Hawaiian or Other Pacific Islander, not NHspanic or Latino"
+PATWHITER="What percent of your patient population is represented by each of the following categories? - White, not Hispanic or Latino"
+PAT2MORER="What percent of your patient population is represented by each of the following categories? - Two or more races, not Hispanic or Latino"
+PATDKNOWR="What percent of your patient population is represented by each of the following categories? - I don't know"
+RECORD1="What information does your practice record on your patients' culture and language characteristics? - Nationality/Nativity"
+RECORD2="What information does your practice record on your patients' culture and language characteristics? - Patient's primary language"
+RECORD3="What information does your practice record on your patients' culture and language characteristics? - Sexual orientation/gender identity"
+RECORD4="What information does your practice record on your patients' culture and language characteristics? - Religion"
+RECORD5="What information does your practice record on your patients' culture and language characteristics? - Income"
+RECORD6="What information does your practice record on your patients' culture and language characteristics? - Other"
+RECORD7="What information does your practice record on your patients' culture and language characteristics? - Not applicable.  We do not collect information related to culture and language"
+PHYSEX="What is your sex?"
+PHYETHR="Physician ethnicity recode"
+PHYRACER="Physician race recode"
+PHYAGE50R="Physician age recode"
+SPECRTYPER="Physician specialty recode"
+YEAR="Survey year"
+SUBFILE="1=CLAS"
+REGION="Region of physician address from survey response"
+CSTRATM="Masked sampling stratum"
+CLASWEIGHT="Physician weight to produce national and regional estimates"
+SUBFILE="Survey identifier"
+;
+
+FORMAT
+YRSCARER YRSCARERF.
+SETTINGR SETTINGRF.
+MDSCHTRG MDSCHTRGF.
+CMETRG CMETRGF.
+CMEPOP1	CMEPOP1F.
+CMEPOP2	CMEPOP2F.
+CMEPOP3	CMEPOP3F.
+CMEPOP4	CMEPOP4F.
+CMEPOP5	CMEPOP5F.
+CMEPOP6	CMEPOP6F.
+CMEAREA1 CMEAREA1F.
+CMEAREA2 CMEAREA2F.
+CMEAREA3 CMEAREA3F.
+CMEAREA4 CMEAREA4F.
+CMEAREA5 CMEAREA5F.
+CMEREQ CMEREQF.
+CLASTRAIN CLASTRAINF.
+CME12POP1 CME12POP1F.
+CME12POP2 CME12POP2F.
+CME12POP3 CME12POP3F.
+CME12POP4 CME12POP4F.
+CME12POP5 CME12POP5F.
+CME12POP6 CME12POP6F.
+CME12AREA1 CME12AREA1F.
+CME12AREA2 CME12AREA2F.
+CME12AREA3 CME12AREA3F.
+CME12AREA4 CME12AREA4F.
+CME12AREA5 CME12AREA5F.
+CME12REQ CME12REQF.
+HIRETRG	HIRETRGF.
+OFFERTRG OFFERTRGF.
+CLASPOLICY CLASPOLICYF.
+AWAREPOLICY AWAREPOLICYF.
+LIMITLIT1 LIMITLIT1F.
+LIMITLIT2 LIMITLIT2F.
+LIMITLIT3 LIMITLIT3F.
+LIMITLIT4 LIMITLIT4F.
+LIMITLIT5 LIMITLIT5F.
+LANGASST1 LANGASST1F.
+LANGASST2 LANGASST2F.
+LANGASST3 LANGASST3F.
+LANGASST4 LANGASST4F.
+LANGASST5 LANGASST5F.
+INTERP INTERPF.
+INTERPTY1 INTERPTY1F.
+INTERPTY2 INTERPTY2F.
+INTERPTY3 INTERPTY3F.
+TRANSMAT1 TRANSMAT1F.
+TRANSMAT2 TRANSMAT2F.
+TRANSMAT3 TRANSMAT3F.
+TRANSMAT4 TRANSMAT4F.
+TRANSMAT5 TRANSMAT5F.
+TRANSMAT6 TRANSMAT6F.
+TRANSMAT7 TRANSMAT7F.
+LANGUAGE LANGUAGEF.
+LANGSERV LANGSERVF.
+KNOWBELIEFS KNOWBELIEFSF.
+MEDNEED1 MEDNEED1F.
+MEDNEED2 MEDNEED2F.
+DIAGNOSE1 DIAGNOSE1F.
+DIAGNOSE2 DIAGNOSE2F.
+TREAT1 TREAT1F.
+TREAT2 TREAT2F.
+HLTHEDU1 HLTHEDU1F.
+HLTHEDU2 HLTHEDU2F.
+SERVASMT SERVASMTF.
+SATISFY	SATISFYF.
+COMPREHEND COMPREHENDF.
+TRMTADHERE TRMTADHEREF.
+TRUST TRUSTF.
+QUALITYCARE QUALITYCAREF.
+LIABILITY LIABILITYF.
+FORMALPOLICY FORMALPOLICYF.
+RESOURCES RESOURCESF.
+CULTRTRG CULTRTRGF.
+PATKNOW PATKNOWF.
+OTHERFACTOR OTHERFACTORF.
+CLASKNOW CLASKNOWF.
+CLASKNOW1 CLASKNOW1F.
+CLASKNOW2 CLASKNOW2F.
+CLASKNOW3 CLASKNOW3F.
+CLASKNOW4 CLASKNOW4F.
+CLASKNOW5 CLASKNOW5F.
+CLASADOPT CLASADOPTF.
+RECRACETH RECRACETHF.
+PATHISPANICR PATHISPANICRF.
+PATAINALNR PATAINALNRF.
+PATASIANR PATASIANRF.
+PATBLACKR PATBLACKRF.
+PATNHOPIR PATNHOPIRF.
+PATWHITER PATWHITERF.
+PAT2MORER PAT2MORERF.
+PATDKNOWR PATDKNOWRF.
+RECORD1	RECORD1F.
+RECORD2	RECORD2F.
+RECORD3	RECORD3F.
+RECORD4	RECORD4F.
+RECORD5	RECORD5F.
+RECORD6	RECORD6F.
+RECORD7	RECORD7F.
+PHYSEX	PHYSEXF.
+PHYETHR	PHYETHRF.
+PHYRACER PHYRACERF.
+PHYAGE50R PHYAGE50RF.
+SPECRTYPER SPECRTYPERF.
+REGION REGIONF.
+SUBFILE SUBFILEF.
+;

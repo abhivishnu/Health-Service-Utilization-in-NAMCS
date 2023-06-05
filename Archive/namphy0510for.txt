@@ -1,0 +1,771 @@
+          /*
+
+SAS FORMATS FOR 2005-2010 NAMCS PUBLIC USE PHYSICIAN TREND FILE 
+
+          */
+ 
+
+PROC FORMAT;
+
+   VALUE MDDOF   
+       1 ='M.D. - Doctor of Medicine'
+       2 ='D.O. - Doctor of Osteopathy'
+;
+
+   VALUE SPECRF
+       01 ='General/family practice'
+       03 ='Internal medicine'
+       04 ='Pediatrics'
+       05 ='General surgery'
+       06 ='Obstetrics and gynecology'
+       07 ='Orthopedic surgery'
+       08 ='Cardiovascular diseases'
+       09 ='Dermatology'
+       10 ='Urology'
+       11 ='Psychiatry'
+       12 ='Neurology'
+       13 ='Ophthalmology'
+       14 ='Otolaryngology'
+       15 ='Other specialties'
+       16 ='Oncology'
+;
+
+  VALUE SPECCATF
+       1 = 'Primary care specialty'
+       2 = 'Surgical care specialty'
+       3 = 'Medical care specialty'
+
+;
+  VALUE REGIONF   
+       1 ='Northeast'
+       2 ='Midwest'
+       3 ='South'
+       4 ='West'
+;
+   VALUE MSAF
+       1 ='MSA (Metropolitan Statistical Area)'
+       2 ='Non-MSA'
+; 
+  
+  VALUE RETYPOFFF
+  1='Private solo or group practice'
+  2='Free-standing clinics /urgicenter'
+  3='Federally qualified health center (FQHC)'
+  4='Mental health center'
+  5='Non-federal government clinic'
+  6='Family planning clinic'
+  7='HMO or other prepaid practice'
+  8='Faculty Practice Plan'
+  9='other'
+;
+ 
+  VALUE SOLOF
+        1 ='Yes'
+        2 ='No'
+       -9 ='Blank'
+;
+
+   VALUE EMPSTATF   
+       1 ='Owner'
+       2 ='Employee'
+       3 ='Contractor'
+      -9 ='Blank'
+;
+   VALUE OWNSF   
+       1 ='Physician or physician group'
+       2 ='Health Maintenance Organization (HMO)'
+       3 ='Community health center'
+       4 ='Medical/academic health center'
+       5 ='Other hospital'
+       6 ='Other health care corporation'
+       7 ='Other'
+      -9 ='Blank'
+;
+   VALUE LABF
+        1 ='Yes'
+        2 ='No'
+       -6 ='Not collected' 
+       -7 ='Not applicable'
+       -8 ='Unknown'
+       -9 ='Blank'
+;
+
+   VALUE PATEVENF
+       1 ='Yes'
+       2 ='No'
+      -6 ='Not collected' 
+      -8 ='Unknown'
+      -9 ='Blank'
+;
+
+	VALUE NHVISRF 
+       1='Yes' 
+       0='No' 
+      -6='Not collected' 
+      -9='Blank'
+;
+
+   VALUE HOMVISRF 1='Yes' 0='No' -9='Blank';
+   VALUE HOSVISRF 1='Yes' 0='No' -9='Blank';
+   VALUE TELCONRF 1='Yes' 0='No' -9='Blank';
+
+   VALUE ECONRF
+       0 ='No'
+       1 ='Yes'
+      -9 ='Blank'
+;
+
+   VALUE EBILRECF
+       1 ='Yes, all electronic'
+       2 ='Yes, part paper, part electronic'
+       3 ='No'
+      -8 ='Unknown'
+      -9 ='Blank'
+;
+
+   VALUE EMEDRECF
+       1 ='Yes, all electronic'
+       2 ='Yes, part paper, part electronic'
+       3 ='No'
+      -8 ='Unknown'
+      -9 ='Blank'
+
+;
+
+   VALUE EDEMOGF
+       1 ='Yes'
+       2 ='No'
+       3 ='Unknown'
+       4 ='Turned off'
+      -7 ='Not applicable'
+      -8 ='Unknown'
+      -9 ='Blank'
+;
+  VALUE EPROLSTF	
+       1='Yes'
+       2='No'
+       4='Turned off'
+      -6='Not collected' 
+      -7='Not applicable'
+      -8='Unknown'
+      -9='Blank'
+;
+
+  VALUE ENNOTESF 
+       1='Yes'
+       2='No'
+       4='Turned off'
+      -6='Not collected' 
+      -7='Not applicable'
+      -8='Unknown'
+      -9='Blank'
+;
+
+  VALUE EPNOTESF	
+       1='Yes'
+       2='No'
+       4='Turned off'
+      -7='Not applicable'
+      -8='Unknown'
+      -9='Blank'
+;
+
+  VALUE EHXFUF	
+       1='Yes'
+       2='No'
+       4='Turned off'
+      -6='Not collected' 
+      -7='Not applicable'
+      -8='Unknown'
+      -9='Blank'
+;
+
+  VALUE EMEDSF
+       1 ='Yes'
+       2 ='No'
+       4 ='Turned off'
+      -6 ='Not collected' 
+      -7 ='Not applicable'
+      -8 ='Unknown'
+      -9 ='Blank'
+;
+
+  VALUE EALLERGF
+       1 ='Yes'
+       2 ='No'
+       4 ='Turned off'
+      -6 ='Not collected' 
+      -7 ='Not applicable'
+      -8 ='Unknown'
+      -9 ='Blank'
+;
+
+
+  VALUE ECPOEF	
+      1='Yes'
+      2='No'
+      4='Turned off'
+     -7='Not applicable'
+     -8='Unknown'
+     -9='Blank'
+;
+ 
+  VALUE EWARNF	
+      1='Yes'
+      2='No'
+      4='Turned off'
+     -6='Not collected' 
+     -7='Not applicable'
+     -8='Unknown'
+     -9='Blank'
+;
+
+  VALUE ESCRIPF	
+      1='Yes'
+      2='No'
+      4='Turned off'
+     -6='Not collected' 
+     -7='Not applicable'
+     -8='Unknown'
+     -9='Blank'
+;
+
+  VALUE ECTOEF	
+      1='Yes'
+      2='No'
+      4='Turned off'
+     -7='Not applicable'
+     -8='Unknown'
+     -9='Blank'
+;
+ 
+ VALUE EORDERF	  
+      1='Yes'
+      2='No'
+      4='Turned off'
+     -6='Not collected' 
+     -7='Not applicable'
+     -8='Unknown'
+     -9='Blank'
+;
+
+  VALUE ERESULTF	
+      1='Yes'
+      2='No'
+      4='Turned off'
+     -7='Not applicable'
+     -8='Unknown'
+     -9='Blank'
+;
+
+VALUE ERESEHRF
+       1 ='Yes'
+       2 ='No'
+       4 ='Turned off'
+      -6 ='Not collected' 
+      -7 ='Not applicable'
+      -8 ='Unknown'
+      -9 ='Blank'
+;
+
+  VALUE ERANGEF
+       1='Yes'
+       2='No'
+       4='Turned off'
+      -6='Not collected' 
+      -7='Not applicable'
+      -8='Unknown'
+      -9='Blank'
+;
+
+  VALUE EIMGRESF	
+       1='Yes'
+       2='No'
+       4='Turned off'
+      -6='Not collected' 
+      -7='Not applicable'
+      -8='Unknown'
+      -9='Blank'
+;
+
+  VALUE EIMAGEF	
+       1='Yes'
+       2='No'
+       4='Turned off'
+      -6='Not collected' 
+      -7='Not applicable'
+      -8='Unknown'
+      -9='No box is marked'
+;
+
+  VALUE EREMINDF	
+       1='Yes'
+       2='No'
+       4='Turned off'
+      -7='Not applicable'
+      -8='Unknown'
+      -9='Blank'
+;
+
+  VALUE EIMMREGF
+       1 ='Yes'
+       2 ='No'
+       4 ='Turned off'
+      -6 ='Not collected' 
+      -7 ='Not applicable'
+      -8 ='Unknown'
+      -9 ='Blank'
+;
+ 
+ VALUE EPUBHLTHF	
+       1='Yes'
+       2='No'
+       4='Turned off'
+      -6='Not collected'
+      -7='Not applicable'
+      -8='Unknown'
+      -9='Blank'
+;
+
+  VALUE ENOTDISF	
+       1='Yes'
+       2='No'
+       4='Turned off'
+      -6='Not collected' 
+      -7='Not applicable'
+      -8='Unknown'
+      -9='Blank'
+;
+
+  VALUE EHRWHO1F 
+       1='Yes'
+       0='No'
+      -6='Not collected' 
+;
+
+  VALUE EHRWHO2F 
+       1='Yes'
+       0='No'
+      -6='Not collected' 
+;
+
+  VALUE EHRWHO3F 
+       1='Yes'
+       0='No'
+      -6='Not collected' 
+;
+
+  VALUE EHRWHO4F 
+       1='Yes'
+       0='No'
+      -6='Not collected' 
+;
+
+  VALUE EHRWHO5F 
+       1='Yes'
+       0='No'
+      -6='Not collected' 
+;
+
+  VALUE EHRWHO6F 
+       1='Yes'
+       0='No'
+      -6='Not collected' 
+;
+
+   VALUE EHRWHO7F 
+       1='Yes'
+       0='No'
+      -6='Not collected' 
+;
+
+  VALUE EHRWHO1RF 
+       1='Yes'
+       0='No'
+      -6='Not collected' 
+      -7='Not applicable'
+;
+
+  VALUE EHRWHO2RF 
+       1='Yes'
+       0='No'
+      -6='Not collected' 
+      -7='Not applicable'
+;
+
+  VALUE EHRWHO3RF 
+       1='Yes'
+       0='No'
+      -6='Not collected' 
+      -7='Not applicable'
+;
+
+  VALUE EHRWHO4RF 
+       1='Yes'
+       0='No'
+      -6='Not collected' 
+      -7='Not applicable'
+;
+
+  VALUE EHRWHO5RF 
+       1='Yes'
+       0='No'
+      -6='Not collected' 
+      -7='Not applicable'
+;
+
+  VALUE EHRWHO6RF 
+       1='Yes'
+       0='No'
+      -6='Not collected' 
+      -7='Not applicable'
+;
+
+  VALUE EHRWHO7RF 
+       1='Yes'
+       0='No'
+      -6='Not collected' 
+      -7='Not applicable'
+;
+
+  VALUE PAYHITF 
+       1='Yes'
+       2='Uncertain'
+       3='No'
+      -6='Not collected' 
+      -7='Not applicable'
+      -9='Blank'
+;
+  VALUE PAYYRF
+       1='2011'
+       2='2012'
+       3='After 2012'
+      -6='Not collected' 
+      -7='Not applicable'
+      -8='Unknown' 
+      -9='Blank'
+;
+
+  VALUE PAYINCF
+       1='Medicare'
+       2='Medicaid'
+      -6='Not collected' 
+      -8='Unknown'
+      -9='Blank'
+;
+
+  VALUE EMRINSF
+       1='Yes'
+       2='No'
+       3='Maybe'
+      -6='Not collected' 
+      -8='Unknown'
+      -9='Blank'
+;
+
+  VALUE EMRNEWF	
+       1='Yes'
+       2='No'
+       3='Maybe'
+      -6='Not collected' 
+      -8='Unknown'
+      -9='Blank'
+;
+
+   VALUE PRMCARERF
+       1='25 percent or less'
+       2='26-50 percent'
+       3='51-75 percent'
+       4='More than 75 percent'
+      -9='Blank' 
+;
+
+   VALUE PRMAIDRF	
+       1='25 percent or less'
+       2='26-50 percent'
+       3='51-75 percent'
+       4='More than 75 percent'
+      -9='Blank' 
+;
+
+   VALUE PRPRVTRF	
+       1='25 percent or less'
+       2='26-50 percent'
+       3='51-75 percent'
+       4='More than 75 percent'
+      -9='Blank' 
+;
+
+   VALUE PRPATRF
+       1='25 percent or less'
+       2='26-50 percent'
+       3='51-75 percent'
+       4='More than 75 percent'
+      -6='Not collected'
+      -9='Blank' 
+;
+
+   VALUE PROTHRF
+       1='25 percent or less'
+       2='26-50 percent'
+       3='51-75 percent'
+       4='More than 75 percent'
+      -9='Blank' 
+;
+
+   VALUE MANCARECF
+       1='None' 
+       2='Less than 3' 
+       3='3-10' 
+       4='More than 10'
+      -9='No box is marked'	
+;
+
+   VALUE PRMANRF
+       1='25 percent or less'
+       2='26-50 percent'
+       3='51-75 percent'
+       4='More than 75 percent'
+      -7='Not applicable'
+      -9='Blank' 
+;
+
+   VALUE PCCPRODF
+       1 = 'Yes'
+       2 = 'No'
+      -6 = 'Not collected' 
+      -8 = 'Unknown'
+      -9 = 'Blank'
+;
+
+   VALUE PCCSATF	
+       1 = 'Yes'
+       2 = 'No'
+      -6 = 'Not collected' 
+      -8 = 'Unknown'
+      -9 = 'Blank'
+;
+
+
+   VALUE PCCQOCF	
+       1 = 'Yes'
+       2 = 'No'
+      -6 = 'Not collected' 
+      -8 = 'Unknown'
+      -9 = 'Blank'
+;
+
+   VALUE PCCPPROFF	
+       1 = 'Yes'
+       2 = 'No'
+      -6 = 'Not collected' 
+      -8 = 'Unknown'
+      -9 = 'Blank'
+;
+
+   VALUE MEASPUBF
+       1 ='Yes'
+       2 ='No'
+      -6 ='Not collected' 
+      -7 ='Not applicable'
+      -8 ='Unknown'
+      -9 ='Blank'
+;
+
+   VALUE PRP4PRF	
+       1='25 percent or less'
+       2='26-50 percent'
+       3='51-75 percent'
+       4='More than 75 percent'
+      -6='Not collected' 
+      -9='Blank' 
+;
+
+   VALUE REVFFSRF
+       1='25 percent or less'
+       2='26-50 percent'
+       3='51-75 percent'
+       4='More than 75 percent'
+      -6='Not collected' 
+      -9='Blank' 
+;
+
+   VALUE REVDISCRF
+       1='25 percent or less'
+       2='26-50 percent'
+       3='51-75 percent'
+       4='More than 75 percent'
+      -6='Not collected' 
+      -9='Blank' 
+	;
+
+   VALUE REVCAPRF	
+       1='25 percent or less'
+       2='26-50 percent'
+       3='51-75 percent'
+       4='More than 75 percent'
+      -6='Not collected' 
+      -9='Blank' 
+;
+
+   VALUE REVCASERF
+       1='25 percent or less'
+       2='26-50 percent'
+       3='51-75 percent'
+       4='More than 75 percent'
+      -6='Not collected' 
+      -9='Blank' 
+;
+
+   VALUE REVOTHERRF
+       1='25 percent or less'
+       2='26-50 percent'
+       3='51-75 percent'
+       4='More than 75 percent'
+      -6='Not collected' 
+      -9='Blank' 
+;
+
+   VALUE ACEPTNEWF
+       1='Yes'
+       2='No'
+      -8='Unknown'
+      -9='Blank'	
+;
+
+   VALUE CAPITATEF
+       1='Yes'
+       2='No'
+      -8="Don't know"
+      -7='Not applicable'
+      -9='Blank'	
+;
+
+   VALUE NOCAPF
+       1='Yes'
+       2='No'
+      -8="Don't know"
+      -7='Not applicable'
+      -9='Blank'	
+;
+
+   VALUE NMEDCAREF	
+       1='Yes'
+       2='No'
+      -8="Don't know"
+      -7='Not applicable'
+      -9='Blank'	
+;
+
+   VALUE NMEDCAIDF
+       1='Yes'
+       2='No'
+      -8="Don't know"
+      -7='Not applicable'
+      -9='Blank'	
+;
+
+   VALUE NWORKCMPF
+       1='Yes'
+       2='No'
+      -8="Don't know"
+      -7='Not applicable'
+      -9='Blank'	
+;
+
+   VALUE NSELFPAYF
+       1='Yes'
+       2='No'
+      -8="Don't know"
+      -7='Not applicable'
+      -9='Blank'	
+;
+
+   VALUE NNOCHRGEF
+       1='Yes'
+       2='No'
+      -8="Don't know"
+      -7='Not applicable'
+      -9='Blank'	
+;
+
+   VALUE REFMDCADF
+       1='A lot of difficulty'
+       2='Some difficulty'
+       3='Little difficulty'
+       4='No difficulty'
+      -6='Not collected' 
+      -7='Not applicable'
+      -8="Don't know"
+      -9='Blank'
+;
+
+   VALUE REFMDCARF
+       1='A lot of difficulty'
+       2='Some difficulty'
+       3='Little difficulty'
+       4='No difficulty'
+      -6='Not collected' 
+      -7='Not applicable'
+      -8="Don't know"
+      -9='Blank'
+;
+
+   VALUE REFPRIVF
+       1='A lot of difficulty'
+       2='Some difficulty'
+       3='Little difficulty'
+       4='No difficulty'
+      -6='Not collected' 
+      -7='Not applicable'
+      -8="Don't know"
+      -9='Blank'
+;
+
+   VALUE REFUNINSF
+       1='A lot of difficulty'
+       2='Some difficulty'
+       3='Little difficulty'
+       4='No difficulty'
+      -6='Not collected' 
+      -7='Not applicable'
+      -8="Don't know"
+      -9='Blank'
+;
+
+   VALUE SDAPPTF
+      -6='Not collected' 
+      -9='Blank'
+;
+
+   VALUE SASDAPPTF
+       1='Yes' 
+       2='No' 
+      -6='Not collected' 
+      -8="Don't know"
+      -9='Blank'
+;
+
+   VALUE APPTTIMEF
+       1='Within 1 week' 
+       2='1-2 weeks' 
+       3='3-4 weeks' 
+       4='1-2 months' 
+       5='3 or more months' 
+       6='Do not provide routine exams' 
+      -6='Not collected' 
+      -8="Don't Know"
+      -9='Blank'
+;
+
+  VALUE CCSF  
+       1 = 'Yes'
+       2 = 'No'
+      -6 = 'Not collected' 
+      -7 = 'Not applicable'
+      -8 = 'Unknown'
+      -9 = 'Blank'
+;
+
+   
+

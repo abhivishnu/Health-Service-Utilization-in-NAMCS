@@ -1,0 +1,365 @@
+          /* 
+
+SAS CODEBOOK FOR 1994 NAMCS PUBLIC USE FILE
+INCLUDES VARIABLE LABELS AND FORMAT ASSIGNMENTS
+                                                       
+          */
+
+LABEL
+VMONTH="Month of visit"
+VDAY="Day of visit - 1-31"
+VYEAR="Year of visit - last 2 digits"
+AGE="Patient age in years"
+SEX="Patient sex"
+RACE="Patient race"
+ETHNIC="Patient ethnicity"
+HMO="Expected source of payment - HMO/Oth prepaid"
+MEDICARE="Expected source of payment - Medicare"
+MEDICAID="Expected source of payment - Medicaid"
+OTHGOVT="Expected source of payment - Oth gov't"
+PRIVINS="Expected source of payment - Private/Comm insur"
+NOCHARGE="Expected source of payment - No charge"
+SELFPAY="Expected source of payment - Patient paid"
+OTHPAY="Expected source of payment - Other"
+UNKPAY="Expected source of payment - Unknown"
+REFER="Was pat referred by oth physician for visit?"
+INJURY="Is this visit injury related?"
+SMOKCIG="Does patient smoke cigarettes?"
+RFV1="Patient's reason for visit #1"
+RFV2="Patient's reason for visit #2"
+RFV3="Patient's reason for visit #3"
+RFV13D="Patient's reason for visit #1 - broad"
+RFV23D="Patient's reason for visit #2 - broad"
+RFV33D="Patient's reason for visit #3 - broad"
+DIAG1="Physician's diagnosis #1"
+DIAG2="Physician's diagnosis #2"
+DIAG3="Physician's diagnosis #3"
+DIAG13D="Physician's diagnosis #1 - broad"
+DIAG23D="Physician's diagnosis #2 - broad"
+DIAG33D="Physician's diagnosis #3 - broad"
+SENBEFOR="Have you/anyone in practice seen pat before?"
+IFYES="If seen before, for diagnosis in item 11a?"
+ASTHMA="Does patient have - Asthma"
+DIABETES="Does patient have - Diabetes"
+HIV="Does patient have - HIV"
+OBESITY="Does patient have - Obesity"
+OSTEOPOR="Does patient have - Osteoporosis"
+NONE="Does patient have - None of the above"
+NOTESTS="Test, procs, therapies ordered/prov-None"
+BLODPRES="Blood pressure"
+URINE="Urinalysis"
+SPIROMET="Spirometry"
+ALLERTST="Allergy testing"
+HIVSER="HIV serology"
+OTHERBLD="Other blood test"
+PROC1PER="Service #1 performed or ordered"
+PROC1="Service #1 procedure code - 4 digits"
+PROC13D="Service #1 procedure code - 3 digits"
+PROC12D="Service #1 procedure code - 2 digits"
+PROC2PER="Service #2 performed or ordered"
+PROC2="Service #2 procedure code - 4 digits"
+PROC23D="Service #2 procedure code - 3 digits"
+PROC22D="Service #2 procedure code - 2 digits"
+PROC3PER="Service #3 performed or ordered"
+PROC3="Service #3 procedure code - 4 digits"
+PROC33D="Service #3 procedure code - 3 digits"
+PROC32D="Service #3 procedure code - 2 digits"
+PROC4PER="Service #4 performed or ordered"
+PROC4="Service #4 procedure code - 4 digits"
+PROC43D="Service #4 procedure code - 3 digits"
+PROC42D="Service #4 procedure code - 2 digits"
+PROC5PER="Service #5 performed or ordered"
+PROC5="Service #5 procedure code - 4 digits"
+PROC53D="Service #5 procedure code - 3 digits"
+PROC52D="Service #5 procedure code - 2 digits"
+PROC6PER="Service #6 performed or ordered"
+PROC6="Service #6 procedure code - 4 digits"
+PROC63D="Service #6 procedure code - 3 digits"
+PROC62D="Service #6 procedure code - 2 digits"
+PROC7PER="Service #7 performed or ordered"
+PROC7="Service #7 procedure code - 4 digits"
+PROC73D="Service #7 procedure code - 3 digits"
+PROC72D="Service #7 procedure code - 2 digits"
+PROC8PER="Service #8 performed or ordered"
+PROC8="Service #8 procedure code - 4 digits"
+PROC83D="Service #8 procedure code - 3 digits"
+PROC82D="Service #1 procedure code - 2 digits"
+NOCOUNS="Counseling/education - none"
+EXERCISE="Exercise couns/educ"
+CHOLRED="Cholesterol reduction couns/educ"
+WEIGHT="Weight reduction couns/educ"
+SMOKCES="Smoking cessation couns/educ"
+GRWTHDEV="Growth/Development couns/educ"
+INJPREV="Injury prevention couns/educ"
+HIVTR="HIV transmission couns/educ"
+OTHSTDTR="Other STD transmission couns/educ"
+OTHCOUN="Other counseling"
+MED="Were medications ordered or provided?"
+NUMMED="Number of medications coded"
+MED1="Medication #1"
+MED2="Medication #2"
+MED3="Medication #3"
+MED4="Medication #4"
+MED5="Medication #5"
+NOFOLLOW="No follow-up planned"
+RETAPPT="Return at specified time"
+RETPRN="Return if needed, P.R.N."
+TELEPHON="Telephone follow-up planned"
+REFOTHPH="Referred to another physician"
+REFPHYS="Returned to referring physician"
+ADMITHOS="Admitted to hospital"
+OTHERDIS="Other disposition"
+TIMEMD="Duration of visit (in minutes)"
+PATWT="Patient visit weight (rounded)"
+REGION="Geographic region of physician office"
+URBAN="Metro/non-metro status of location of office"
+SPEC="Physician specialty"
+MDDO="Type of physician (MD or DO)"
+PHYCODE="Physician code"
+PATCODE="Patient code"
+BDATEFL="Was patient's birth year imputed?"
+SEXFL="Was patient's sex imputed?"
+REFERFL="Was patient's referral status imputed?"
+SENBEFL="Was `Was patient seen before?` imputed?"
+IFYESFL="Was `If seen before...` imputed? "
+DISPFL="Was visit disposition imputed?"
+TIMEMDFL="Was time spent with physician imputed?"
+RACEFL="Was patient's race imputed?"
+ETHNICFL="Was patient's ethnicity imputed?"
+GEN1="Generic name code for medication #1"
+PRESCR1="Prescription status code for medication #1"
+CONTSUB1="Controlled substance code for medication #1"
+COMSTAT1="Composition status code for medication #1"
+DRUGCL1="Drug class for medication #1"
+DRG1ING1="Ingredient code #1 for medication #1"
+DRG1ING2="Ingredient code #2 for medication #1"
+DRG1ING3="Ingredient code #3 for medication #1"
+DRG1ING4="Ingredient code #4 for medication #1"
+DRG1ING5="Ingredient code #5 for medication #1"
+GEN2="Generic name code for medication #2"
+PRESCR2="Prescription status code for medication #2"
+CONTSUB2="Controlled substance code for medication #2"
+COMSTAT2="Composition status code for medication #2"
+DRUGCL2="Drug class for medication #2"
+DRG2ING1="Ingredient code #1 for medication #2"
+DRG2ING2="Ingredient code #2 for medication #2"
+DRG2ING3="Ingredient code #3 for medication #2"
+DRG2ING4="Ingredient code #4 for medication #2"
+DRG2ING5="Ingredient code #5 for medication #2"
+GEN3="Generic name code for medication #3"
+PRESCR3="Prescription status code for medication #3"
+CONTSUB3="Controlled substance code for medication #3"
+COMSTAT3="Composition status code for medication #3"
+DRUGCL3="Drug class for medication #3"
+DRG3ING1="Ingredient code #1 for medication #3"
+DRG3ING2="Ingredient code #2 for medication #3"
+DRG3ING3="Ingredient code #3 for medication #3"
+DRG3ING4="Ingredient code #4 for medication #3"
+DRG3ING5="Ingredient code #5 for medication #3"
+GEN4="Generic name code for medication #4"
+PRESCR4="Prescription status code for medication #4"
+CONTSUB4="Controlled substance code for medication #4"
+COMSTAT4="Composition status code for medication #4"
+DRUGCL4="Drug class for medication #4"
+DRG4ING1="Ingredient code #1 for medication #4"
+DRG4ING2="Ingredient code #2 for medication #4"
+DRG4ING3="Ingredient code #3 for medication #4"
+DRG4ING4="Ingredient code #4 for medication #4"
+DRG4ING5="Ingredient code #5 for medication #4"
+GEN5="Generic name code for medication #5"
+PRESCR5="Prescription status code for medication #5"
+CONTSUB5="Controlled substance code for medication #5"
+COMSTAT5="Composition status code for medication #5"
+DRUGCL5="Drug class for medication #5"
+DRG5ING1="Ingredient code #1 for medication #5"
+DRG5ING2="Ingredient code #2 for medication #5"
+DRG5ING3="Ingredient code #3 for medication #5"
+DRG5ING4="Ingredient code #4 for medication #5"
+DRG5ING5="Ingredient code #5 for medication #5"
+RACER="Patient race recode: White, Black, Other"
+SPECR="Physician specialty recode"
+STRATM="PSU stratum marker (masked)"
+PSUM="PSU marker (masked)"
+YEAR="Survey year (1994)"
+SUBFILE="Survey identifier (constant=1 for NAMCS)"
+PROSTRAT="Provider stratum marker"
+PROVIDER="Provider code"
+DEPT="Hospital dept code (constant=1 for NAMCS)"
+SU="Hospital sampling unit code (=001 for NAMCS)"
+CLINIC="Hospital clinic code (=001 for NAMCS)"
+POPPSUM="Stratum counts of PSUs (masked)"
+POPSUM="# of clinic sampling units in hos (=0 for NAMCS)"
+POPVISM="Estimated provider visit volume (masked)"
+POPPROVM="Estimated # of inscope providers in PSU (masked)"
+;
+
+
+FORMAT
+VMONTH VMONTHF.
+SEX SEXF.
+RACE RACEF.
+ETHNIC ETHNICF.
+HMO 
+MEDICARE
+MEDICAID
+OTHGOVT
+PRIVINS
+SELFPAY
+NOCHARGE
+OTHPAY
+UNKPAY YESNOF.
+REFER REFERF.
+INJURY INJURYF.
+SMOKCIG SMOKCIGF.
+RFV1 
+RFV2
+RFV3 RFVF.
+RFV13D
+RFV23D
+RFV33D RFV3DF.
+DIAG1
+DIAG2
+DIAG3 DIAGF.
+DIAG13D
+DIAG23D
+DIAG33D DIAG3DF.
+SENBEFOR SENBEFOF.
+IFYES  IFYESF.
+ASTHMA
+DIABETES
+HIV
+OBESITY
+OSTEOPOR
+NONE 
+NOTESTS
+BLODPRES
+URINE
+SPIROMET
+ALLERTST
+HIVSER
+OTHERBLD YESNOF.
+PROC1PER SERVPERF.
+PROC1 $PROC1F.
+PROC13D  $PROC3F.
+PROC12D  $PROC2F.
+PROC2PER  SERVPERF.
+PROC2  $PROC1F.
+PROC23D  $PROC3F.
+PROC22D  $PROC2F.
+PROC3PER  SERVPERF.
+PROC3  $PROC1F.
+PROC33D  $PROC3F.
+PROC32D  $PROC2F.
+PROC4PER  SERVPERF.
+PROC4  $PROC1F.
+PROC43D  $PROC3F.
+PROC42D  $PROC2F.
+PROC5PER  SERVPERF.
+PROC5  $PROC1F.
+PROC53D  $PROC3F.
+PROC52D  $PROC2F.
+PROC6PER  SERVPERF.
+PROC6  $PROC1F.
+PROC63D  $PROC3F.
+PROC62D  $PROC2F.
+PROC7PER  SERVPERF.
+PROC7  $PROC1F.
+PROC73D  $PROC3F.
+PROC72D  $PROC2F.
+PROC8PER  SERVPERF.
+PROC8  $PROC1F.
+PROC83D  $PROC3F.
+PROC82D  $PROC2F.
+NOCOUNS
+EXERCISE
+CHOLRED
+WEIGHT
+SMOKCES
+GRWTHDEV
+INJPREV
+HIVTR
+OTHSTDTR
+OTHCOUN  YESNOF.
+MED MEDF.
+MED1 
+MED2
+MED3
+MED4
+MED5 $MEDCODF.
+NOFOLLOW
+RETAPPT
+RETPRN
+TELEPHON
+REFOTHPH
+REFPHYS
+ADMITHOS
+OTHERDIS YESNOF.
+TIMEMD  TIMEMDF.
+REGION REGIONF.
+URBAN  URBANF.
+SPEC $SPECF.
+MDDO MDDOF.
+BDATEFL
+SEXFL
+REFERFL
+SENBEFL
+IFYESFL
+DISPFL
+TIMEMDFL
+RACEFL
+ETHNICFL IMPUTF.
+GEN1  $GENCODF.
+PRESCR1  PRESCRF.
+CONTSUB1  CONTSUBF.
+COMSTAT1  COMSTATF.
+DRUGCL1   $DRUGCLF.
+DRG1ING1  
+DRG1ING2  
+DRG1ING3  
+DRG1ING4  
+DRG1ING5  
+GEN2  $GENCODF.
+PRESCR2  PRESCRF.
+CONTSUB2  CONTSUBF.
+COMSTAT2  COMSTATF.
+DRUGCL2   $DRUGCLF.
+DRG2ING1  
+DRG2ING2  
+DRG2ING3  
+DRG2ING4  
+DRG2ING5  
+GEN3  $GENCODF.
+PRESCR3  PRESCRF.
+CONTSUB3  CONTSUBF.
+COMSTAT3  COMSTATF.
+DRUGCL3  $DRUGCLF.
+DRG3ING1  
+DRG3ING2  
+DRG3ING3  
+DRG3ING4  
+DRG3ING5  
+GEN4  $GENCODF.
+PRESCR4  PRESCRF.
+CONTSUB4  CONTSUBF.
+COMSTAT4  COMSTATF.
+DRUGCL4  $DRUGCLF.
+DRG4ING1  
+DRG4ING2  
+DRG4ING3  
+DRG4ING4  
+DRG4ING5  
+GEN5  $GENCODF.
+PRESCR5  PRESCRF.
+CONTSUB5  CONTSUBF.
+COMSTAT5  COMSTATF.
+DRUGCL5  $DRUGCLF.
+DRG5ING1  
+DRG5ING2  
+DRG5ING3  
+DRG5ING4  
+DRG5ING5  $GENCODF.
+RACER RACERF.
+SPECR SPECRF.
+;
+
+
