@@ -7,13 +7,9 @@ library(forcats)
 library(tableone)
 source("customtab.R")
 
-
-# myVars <- c('COLON','MENTAL','PT','MAMMO', 'PSYCHOTH','BREAST','DEPRESS','DIETNUTR','EXERCISE','STRESMGT',
-#             'TOBACED','SIGMOID','OCCUPY','GENETIC','DME','HOMEHLTH','RADTHER','BONEDENS','CAM','AnyService_0_1',
-#             'CANCER','AGEgt65','AGE', 'PATWT','CSTRATM','CPSUM','RACERETH','SEX','PAYTYPER')
 myVars <- c('DME', 'COLON', 'SIGMOID', 'MENTAL', 'PT', 'PSYCHOTH', 'OCCUPY', 'CervicalCaScreen', 'DEPRESS', 'DIETNUTR', 'EXERCISE', 'STRESMGT', 'MAMMO', 
             'HOMEHLTH', 'TOBACED', 'CAM', 'BONEDENS', 'GENETIC', 'RADTHER', 'HEPTEST', 'SUBST', 'ETOHED', 'HIV','AnyService_0_1','CANCER','AGEgt65','AGE', 
-            'PATWT','CSTRATM','CPSUM','RACERETH','SEX','PAYTYPER')
+            'PATWT','CSTRATM','CPSUM','RACERETH','SEX','PAYTYPER' )
 
 myVars2 <- c('DME', 'COLON', 'SIGMOID', 'MENTAL', 'PT', 'PSYCHOTH', 'OCCUPY', 'CervicalCaScreen', 'DEPRESS', 'DIETNUTR', 'EXERCISE', 'STRESMGT', 'MAMMO', 
              'HOMEHLTH', 'TOBACED', 'CAM', 'BONEDENS', 'GENETIC', 'RADTHER', 'HEPTEST', 'SUBST', 'ETOHED', 'HIV','AnyService_0_1','CANCER','AGEgt65','RACERETH',
