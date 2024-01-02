@@ -1,0 +1,206 @@
+---
+title: "NAMCS Ambulatory Care Services Utilization Among Cancer Patients"
+author: "Abhi VIshnu"
+date: "2024-01-02"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE)
+```
+
+## Abstract
+Health care costs have been rising at an alarming rate in the USA. The cost of insurance premiums have been increasing, as well as the cost to the CMMS which manages the Medicare programs of millions of Americans. One way to lower the rising costs is by providing preventive services to patients who may be high risk for developing healthcare conditions/complications in the future.
+
+The Center for Disease Control and Prevention conducts a National Ambulatory Medical Care Survey among carefully chosen Physicians in the US to understand services provided to patients in physician offices. A very small number of physicians (a few hundreds) are carefully selected to represent all the physicians in the US, including representation by region, demographics and medical specialty. As this is a complex survey, analysis of data from this survey must be done after applying survey weights as suggested by the CDC.  
+
+
+# Steps
+Here we are going to use the data from the 2015-2018 surveys of the NAMCS. The survey was completed and data released twice in this study period - in 2016 and in 2018.
+We used the publicly available data from the CDC website for this analysis.
+
+```{r}
+library(haven)
+library(naniar)
+library(ggplot2)
+library(dplyr)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure}
+namcs2016_sas <- read_sas("C:/Users/Abhi/Documents/NAMCS/namcs2016_sas/namcs2016_sas.sas7bdat", NULL)
+namcs2018_sas <- read_sas("C:/Users/Abhi/Documents/NAMCS/namcs2018_sas/namcs2018_sas.sas7bdat", NULL)
+
+```
+
+
+```{r}
+namcs2016_sas_1 <- subset(namcs2016_sas, select = c(-SPECR, -REGIONOFF))
+namcs2018_sas_1 <- subset(namcs2018_sas, select = c(-CATPROC1, -CATPROC2, -CATPROC3, -CATPROC4, -CATPROC5, -CATPROC6, -CATPROC7, -CATPROC8, -CATPROC9))
+```
+
+
+
+
+
+```{r}
+comb201618_namcs <- rbind(namcs2016_sas_1, namcs2018_sas_1)
+comb201618_namcs$CervicalCaScreen <- if_else(comb201618_namcs$PAP == 1 | comb201618_namcs$HPVDNA == 1, 1, 0)
+weighted.mean(namcs2016_sas$BPSYS, namcs2016_sas$PATWT)
+```
+#need to replace '-9' '-998' with NA
+
+```{r}
+comb201618_namcs <- comb201618_namcs %>% naniar::replace_with_na(replace = list(BPDIAS = c(-9, 998), 
+                                                                    BPSYS = c(-9,998),
+                                                                    TGSRES = c(-9, 998,-7),
+                                                                    LDLRES = c(-9, 998,-7),
+                                                                    A1CRES = c(-9, 998,-7),
+                                                                    FBGRES = c(-9, 998,-7),
+                                                                    PASTVIS = c(-7),
+                                                                    PAYTYPER = c(-9, -8),
+                                                                    BIOPROV = c(-9, -7),
+                                                                    SIGPROV = c(-9, -7),
+                                                                    EXCIPROV = c(-9, -7),
+                                                                    TOTCHRON = c(-9)))
+```
+
+Here we are going to create two summary variables: (1) *TotalServices* to calculate the number of services provided to individual patient, and (2) *AnyService* (0=No, 1=Yes) if the patient received any of the above identified services from the physician during their office visit.
+
+
+```{r}
+attach(comb201618_namcs) #attaching the dataset in use to avoid repeating the name for each of the variable below. Note that we still need to specify the dataset name for variables created after 'attaching'them to the current session
+comb201618_namcs$TotalServices <- EKG + DME + COLON + AUDIO + CRYO + SPIRO + MENTAL + PT + PSYCHOTH + WOUND + ETOH + CervicalCaScreen + DEPRESS + FOOT + NEURO + PELVIC + RECTAL + RETINAL + SKIN +   SUBST + DIAEDUC + DIETNUTR + EXERCISE + GRWTHDEV + INJPREV + STRESMGT + SUBSTED + TOBACED + WTREDUC + OTHSERV + HEPTEST + SUBST + ETOHED + HIV
+comb201618_namcs$TotalServices_0_1 <- ifelse(comb201618_namcs$TotalServices == 0, 0, 1)
+```
+
+```{r}
+comb201618_namcs$AnyService <- DME + COLON + SIGMOID +   MENTAL + PT + PSYCHOTH + OCCUPY + CervicalCaScreen + DEPRESS + DIETNUTR + EXERCISE + STRESMGT + MAMMO + HOMEHLTH + TOBACED + CAM + BONEDENS + GENETIC +   RADTHER + HEPTEST + SUBST + ETOHED + HIV  
+comb201618_namcs$AnyService_0_1 <- ifelse(comb201618_namcs$AnyService == 0, 0, 1)
+detach(comb201618_namcs)
+```
+
+
+
+```{r echo=T, results='hide', quietly=T}
+source("C:/Users/Abhi/Documents/NAMCS/NAMCS_Analysis_06_12/customtab.R")
+library(survey)
+library(tableone)
+library(tibble)
+library(stringr)
+library(pillar)
+library(flextable)
+library(tidyr)
+library(dplyr)
+library(officer)
+library(forcats)
+```
+Here we are considering which variables to include in the Table 1
+```{r}
+variables <- c('SEX','RACERETH', 'PAYTYPER', 'CANCER',
+               'AnyService_0_1', 
+               'CSTRATM','CPSUM', 'PATWT')
+
+```
+Again, we explicitly convert the binary  variables into Factors
+```{r}
+d201618_table1 <- comb201618_namcs %>% select(all_of(variables)) 
+
+d201618_table2 <- d201618_table1 %>% mutate(SEX = as_factor(SEX),
+                                           RACERETH = as_factor(RACERETH),
+                                           CANCER = as_factor(CANCER),
+                                           PAYTYPER = as_factor(PAYTYPER),
+                                           AnyService_0_1 = as_factor(AnyService_0_1)
+)
+
+```
+
+```{r}
+d201618_table2$SEX <- d201618_table2$SEX %>%
+  fct_recode(Male = '2', Female = '1')
+
+```
+
+```{r}
+# All variables excluding the group variable AND Major variable as recoded above
+myVars <- d201618_table2 %>% select(c(-CANCER, -CSTRATM,-PATWT,-CPSUM)) %>% names()
+
+# All categorical variables
+catVars <- d201618_table2 %>% select(where(is.factor)) %>%
+  dplyr::select(-CANCER) %>% names()
+
+```
+
+
+```{r}
+svy_d201618 <- svydesign(id=~CSTRATM+CPSUM, fpc =NULL, weights = d201618_table2$PATWT, data = d201618_table2)
+
+```
+
+```{r}
+tab1 <- svyCreateTableOne(vars = myVars,data = svy_d201618 ,
+                          factorVars = catVars,
+                          strata = "CANCER",
+                          addOverall = T,
+                          smd = TRUE,
+                          includeNA = FALSE)
+```
+
+```{r}
+tab1_word <- print(tab1,
+                   quote = F,
+                   noSpaces = T,
+                   smd = TRUE,
+                   contDigits = 1,
+                   printToggle = F,
+                   dropEqual = T,
+                   explain = F)
+
+```
+
+```{r}
+# Convert to dataframe
+tab1_df <- as.data.frame(tab1_word) %>% rownames_to_column(var = "Variable")
+
+# Rename first variable from n to No.
+tab1_df$Variable[1] <- "No."
+# Set Table header
+header <- str_squish(str_remove("Table 1. Baseline characteristics By Cancer Status in the 2016, 18 NAMCS Study", "\n"))
+# Set Table footer
+footer <- str_squish(str_remove("Numbers are No. (%) unless otherwise noted.
+SD = standard deviation, IQR = interquartile range", "\n"))
+# Set custom_tab() defaults
+customtab_defaults()
+# Create the flextable object
+flextable_1 <- custom_tab(tab1_df, header, footer)
+
+```
+
+```{r}
+# Save as word .docx
+save_as_docx(flextable_1, path = "NAMCS201618_CA_Tab1_JGIMRevision__20231222.docx",
+             pr_section =
+               prop_section(page_size = page_size(orient = "portrait"),
+                            type = "continuous"))
+
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
