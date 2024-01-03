@@ -93,16 +93,8 @@ Now, coming to our first table (or *Table One*), we use the *TableOne* package i
 We first load the required packages
 
 ```{r echo=T, results='hide', quietly=T}
-source("C:/Users/Abhi/Documents/NAMCS/NAMCS_Analysis_06_12/customtab.R")
 library(survey)
 library(tableone)
-library(tibble)
-library(stringr)
-library(pillar)
-library(flextable)
-library(tidyr)
-library(dplyr)
-library(officer)
 library(forcats)
 ```
 
