@@ -19,6 +19,8 @@ The Center for Disease Control and Prevention conducts a National Ambulatory Med
 Here we are going to use the data from the 2015-2018 surveys of the NAMCS. The survey was completed and data released twice in this study period - in 2016 and in 2018.
 We used the publicly available data from the CDC website for this analysis.
 
+First, we have to load the required libraries
+
 ```{r}
 library(haven)
 library(naniar)
@@ -26,9 +28,9 @@ library(ggplot2)
 library(dplyr)
 ```
 
-## Including Plots
+Reading datasetss: I have already downloaded the datasets from the CDC website https://www.cdc.gov/nchs/ahcd/datasets_documentation_related.htm
+Note that the data is available to download only in SAS, Stata or SPSS formats. To use them in R, we first need to convert them to a R dataset. Here, I have used the *haven* library to read the SAS dataset into R
 
-You can also embed plots, for example:
 
 ```{r pressure}
 namcs2016_sas <- read_sas("C:/Users/Abhi/Documents/NAMCS/namcs2016_sas/namcs2016_sas.sas7bdat", NULL)
@@ -36,21 +38,18 @@ namcs2018_sas <- read_sas("C:/Users/Abhi/Documents/NAMCS/namcs2018_sas/namcs2018
 
 ```
 
-
+We plan to combine the 2016 and 2018 datasets but I noticed that some of the variables are not common. We thus remove those variables to allow us to merge the two datasets.
 ```{r}
 namcs2016_sas_1 <- subset(namcs2016_sas, select = c(-SPECR, -REGIONOFF))
 namcs2018_sas_1 <- subset(namcs2018_sas, select = c(-CATPROC1, -CATPROC2, -CATPROC3, -CATPROC4, -CATPROC5, -CATPROC6, -CATPROC7, -CATPROC8, -CATPROC9))
-```
-
-
-
-
-
-```{r}
 comb201618_namcs <- rbind(namcs2016_sas_1, namcs2018_sas_1)
-comb201618_namcs$CervicalCaScreen <- if_else(comb201618_namcs$PAP == 1 | comb201618_namcs$HPVDNA == 1, 1, 0)
-weighted.mean(namcs2016_sas$BPSYS, namcs2016_sas$PATWT)
+dim(comb201618_namcs)
 ```
+
+
+
+
+This dataset has 23118 rows (1 row for each patient) and 1034 columns (variables). Also, each of these patients have been assigned a weight generated using sophisticated complex survey methodology. Thus, all statistics performed with dataset should use those weights to generate estimates that are representative of the whole nation 
 #need to replace '-9' '-998' with NA
 
 ```{r}
@@ -70,6 +69,12 @@ comb201618_namcs <- comb201618_namcs %>% naniar::replace_with_na(replace = list(
 
 Here we are going to create two summary variables: (1) *TotalServices* to calculate the number of services provided to individual patient, and (2) *AnyService* (0=No, 1=Yes) if the patient received any of the above identified services from the physician during their office visit.
 
+But before we get there, we also create a summary variable for Cervical Cancer screen as patients who got PAP smear or HPVDNA testing can be combined under Cervical Cancer Screening. We name this variable *CervicalCaScreen*
+
+```{r}
+comb201618_namcs$CervicalCaScreen <- if_else(comb201618_namcs$PAP == 1 | comb201618_namcs$HPVDNA == 1, 1, 0)
+
+```
 
 ```{r}
 attach(comb201618_namcs) #attaching the dataset in use to avoid repeating the name for each of the variable below. Note that we still need to specify the dataset name for variables created after 'attaching'them to the current session
@@ -84,6 +89,8 @@ detach(comb201618_namcs)
 ```
 
 
+Now, coming to our first table (or *Table One*), we use the *TableOne* package in R to help us get a visually appealing table
+We first load the required packages
 
 ```{r echo=T, results='hide', quietly=T}
 source("C:/Users/Abhi/Documents/NAMCS/NAMCS_Analysis_06_12/customtab.R")
@@ -98,14 +105,15 @@ library(dplyr)
 library(officer)
 library(forcats)
 ```
-Here we are considering which variables to include in the Table 1
+
+Here we are considering the variables which we include in the Table 1
 ```{r}
 variables <- c('SEX','RACERETH', 'PAYTYPER', 'CANCER',
                'AnyService_0_1', 
                'CSTRATM','CPSUM', 'PATWT')
 
 ```
-Again, we explicitly convert the binary  variables into Factors
+Here, we explicitly convert the binary or categorical variables into factors
 ```{r}
 d201618_table1 <- comb201618_namcs %>% select(all_of(variables)) 
 
@@ -117,29 +125,26 @@ d201618_table2 <- d201618_table1 %>% mutate(SEX = as_factor(SEX),
 )
 
 ```
-
+We will recode the *SEX* variable to help as will allow more flexibility while making the tables
 ```{r}
 d201618_table2$SEX <- d201618_table2$SEX %>%
   fct_recode(Male = '2', Female = '1')
 
 ```
-
+The following lines of code prepare the dataset for creating the table 1 containing the descriptive statistics
 ```{r}
-# All variables excluding the group variable AND Major variable as recoded above
+# All variables excluding the group, survey variables AND Major (Stratification) variable as recoded above
 myVars <- d201618_table2 %>% select(c(-CANCER, -CSTRATM,-PATWT,-CPSUM)) %>% names()
 
 # All categorical variables
 catVars <- d201618_table2 %>% select(where(is.factor)) %>%
   dplyr::select(-CANCER) %>% names()
 
-```
-
-
-```{r}
 svy_d201618 <- svydesign(id=~CSTRATM+CPSUM, fpc =NULL, weights = d201618_table2$PATWT, data = d201618_table2)
 
 ```
 
+Now, with our dataset and the survey design ready, we ask to create Table 1 and use the *kableone* function to view it within the Markdown document
 ```{r}
 tab1 <- svyCreateTableOne(vars = myVars,data = svy_d201618 ,
                           factorVars = catVars,
@@ -147,47 +152,10 @@ tab1 <- svyCreateTableOne(vars = myVars,data = svy_d201618 ,
                           addOverall = T,
                           smd = TRUE,
                           includeNA = FALSE)
+kableone(tab1)
 ```
 
-```{r}
-tab1_word <- print(tab1,
-                   quote = F,
-                   noSpaces = T,
-                   smd = TRUE,
-                   contDigits = 1,
-                   printToggle = F,
-                   dropEqual = T,
-                   explain = F)
 
-```
-
-```{r}
-# Convert to dataframe
-tab1_df <- as.data.frame(tab1_word) %>% rownames_to_column(var = "Variable")
-
-# Rename first variable from n to No.
-tab1_df$Variable[1] <- "No."
-# Set Table header
-header <- str_squish(str_remove("Table 1. Baseline characteristics By Cancer Status in the 2016, 18 NAMCS Study", "\n"))
-# Set Table footer
-footer <- str_squish(str_remove("Numbers are No. (%) unless otherwise noted.
-SD = standard deviation, IQR = interquartile range", "\n"))
-# Set custom_tab() defaults
-customtab_defaults()
-# Create the flextable object
-flextable_1 <- custom_tab(tab1_df, header, footer)
-
-```
-
-```{r}
-# Save as word .docx
-save_as_docx(flextable_1, path = "NAMCS201618_CA_Tab1_JGIMRevision__20231222.docx",
-             pr_section =
-               prop_section(page_size = page_size(orient = "portrait"),
-                            type = "continuous"))
-
-
-```
 
 ```{r}
 
